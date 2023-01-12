@@ -1,0 +1,117 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+[data-grid] {
+  display: grid;
+}
+
+[data-even-columns] {
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+}
+
+[data-flex] {
+  display: flex;
+}
+
+[data-justify-content=center] {
+  justify-content: center;
+}
+
+[data-justify-content=space-between] {
+  justify-content: space-between;
+}
+
+[data-justify-items=center] {
+  justify-content: center;
+}
+
+[data-align-content=center] {
+  align-content: center;
+}
+
+[data-align-items=center] {
+  align-items: center;
+}
+
+[data-relative] {
+  position: relative;
+}
+
+[data-absolute] {
+  position: absolute;
+}
+
+:root {
+  font-family: monospace;
+}
+
+.calculator,
+.numpad {
+  gap: 0.5rem 0.25rem;
+}
+
+.numpad button, .screen {
+  border-radius: 0.5vmax;
+}
+
+.calculator {
+  place-self: center;
+  width: min(70%, 700px);
+}
+
+.screen {
+  grid-column: 1/-1;
+  padding: 1rem;
+  background-color: hsl(30deg, 24%, 87%);
+  text-align: end;
+  font-size: 2rem;
+}
+.screen-content:not(:empty) ~ span {
+  opacity: 1;
+  animation: blink 0.4s infinite alternate;
+}
+.screen-content ~ span {
+  opacity: 0;
+}
+
+.numpad {
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-flow: dense;
+}
+.numpad button {
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.numpad :where(.standout) {
+  background-color: hsl(34deg, 3%, 61%);
+  color: white;
+}
+
+[data-aligned] {
+  grid-column: 4;
+}
+
+.equals {
+  background-color: aqua;
+  font-weight: 600;
+}
+
+@keyframes blink {
+  to {
+    opacity: 0;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
