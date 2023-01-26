@@ -54,6 +54,7 @@ body {
 
 :root {
   font-family: monospace;
+  font-size: 16px;
 }
 
 .calculator,
@@ -86,21 +87,42 @@ body {
 }
 
 .numpad {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1.5fr repeat(3, 1fr);
   grid-auto-flow: dense;
 }
 .numpad button {
   border: none;
-  font-size: 1.4rem;
+  font-size: clamp(1.6rem, 2rem, 2.2rem + 1vmax);
   cursor: pointer;
 }
 .numpad :where(.standout) {
   background-color: hsl(34deg, 3%, 61%);
   color: white;
 }
+.numpad .percent,
+.numpad .dot {
+  grid-row: 4;
+}
+.numpad .percent {
+  grid-column: 2;
+}
+.numpad .dot {
+  grid-column: 4;
+}
+.numpad .zero {
+  grid-column: 3;
+}
+.numpad .equals {
+  grid-row: 5;
+  grid-column: 2/span 3;
+}
+
+[disabled] {
+  background-color: hsl(30deg, 2%, 19%);
+}
 
 [data-aligned] {
-  grid-column: 4;
+  grid-column: 1;
 }
 
 .equals {

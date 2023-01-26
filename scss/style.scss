@@ -1,6 +1,7 @@
 @use "layout";
 :root {
   font-family: monospace;
+  font-size: 16px;
 }
 %default-gap {
   gap: 0.5rem 0.25rem;
@@ -34,12 +35,12 @@
   }
 }
 .numpad {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1.5fr repeat(3, 1fr);
   grid-auto-flow: dense;
 
   button {
     border: none;
-    font-size: 1.4rem;
+    font-size: clamp(1.6rem, 2rem, 2.2rem + 1vmax);
     @extend %default-radius;
     cursor: pointer;
   }
@@ -47,9 +48,29 @@
     background-color: hsl(34, 3%, 61%);
     color: white;
   }
+  .percent,
+  .dot {
+    grid-row: 4;
+  }
+  .percent {
+    grid-column: 2;
+  }
+  .dot {
+    grid-column: 4;
+  }
+  .zero {
+    grid-column: 3;
+  }
+  .equals {
+    grid-row: 5;
+    grid-column: 2 / span 3;
+  }
+}
+[disabled] {
+  background-color: hsl(30, 2%, 19%);
 }
 [data-aligned] {
-  grid-column: 4;
+  grid-column: 1;
 }
 .equals {
   background-color: aqua;
